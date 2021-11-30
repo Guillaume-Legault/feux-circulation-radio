@@ -1,5 +1,8 @@
 radio.onReceivedNumber(function (receivedNumber) {
     radio2 = receivedNumber
+    if (receivedNumber == 1) {
+        Pieton = 1
+    }
 })
 function Cycle_pieton () {
     fin_cycle_pieton = 0
@@ -22,6 +25,7 @@ function Cycle_pieton () {
 }
 input.onButtonPressed(Button.A, function () {
     Pieton = 1
+    radio.sendNumber(1)
 })
 function Cycle_lumière () {
     fin_cycle_lumiere = 0
@@ -56,21 +60,23 @@ fin_cycle_lumiere = 0
 fin_cycle_pieton = 0
 basic.forever(function () {
     if (debut_cycle_pieton == 1) {
-        for (let index = 0; index <= 10; index++) {
-            temps = index * -1 + 10
+        for (let index2 = 0; index2 <= 10; index2++) {
+            temps = index2 * -1 + 10
             basic.showNumber(temps)
         }
     }
 })
 basic.forever(function () {
-    if (fin_cycle_lumiere == 1) {
-        radio.sendNumber(5)
-    } else if (fin_cycle_pieton == 1) {
-        radio.sendNumber(7)
-    } else {
+    let debut_cycle_pieton2 = 0
+    let debut_cycle_lumiere2 = 0
+    if (Pieton == 1 && debut_cycle_lumiere2 == 0) {
+        Cycle_pieton()
+        Pieton = 0
+    } else if (Pieton == 0 && debut_cycle_pieton2 == 0) {
     	
-    }
-    if (radio2 == 5) {
+    } else if (false) {
+    	
+    } else {
     	
     }
 })
